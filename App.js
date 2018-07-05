@@ -14,6 +14,9 @@ import {StackNavigator,} from 'react-navigation';
 import Genders from './src/Screens/Genders';
 import Movies from './src/Screens/Movies';
 import DetailMovie from './src/Screens/DetailMovie';
+import Animated1 from './src/Screens/Animated1';
+import Animated2 from './src/Screens/Animated2';
+import AnimatedVector from './src/Screens/AnimatedVector';
 
 export default class App extends Component {
   render() {
@@ -25,9 +28,12 @@ const RootStack = StackNavigator(
   {
     genders: {screen: Genders},
     movies: {screen: Movies},
-    detailMovie: {screen: DetailMovie}
+    detailMovie: {screen: DetailMovie},
+    animated1: {screen: Animated1},
+    animated2: {screen: Animated2},
+    vector: {screen: AnimatedVector},
   },
   {
-    initialRouteName: 'genders',
+    initialRouteName: 'vector',
   }
 );

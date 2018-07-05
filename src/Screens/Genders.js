@@ -11,7 +11,8 @@ import {StackNavigator,} from 'react-navigation';
 
 class Genders extends Component {
   static navigationOptions = {
-    title: 'Genders',
+    title:'Genders1',
+    headerTitleStyle: {color: 'blue', textAlign: 'center'}
   };
 
   constructor() {
