@@ -14,6 +14,8 @@ import {StackNavigator,} from 'react-navigation';
 class Movies extends Component {
   static navigationOptions = {
     title: 'Movies',
+    headerStyle: {backgroundColor: 'red'},
+    headerTitleStyle: {color: 'blue'},
   };
 
   constructor() {
