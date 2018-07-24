@@ -3,6 +3,7 @@ import { AppRegistry } from 'react-native';
 // import App from './AppSaga';
 // import {App} from './AppTabNavigator';
 // import {App} from './AppDrawerNavigator';
-import App from './AppReduxForm';
+// import App from './AppReduxForm';
+import App from './AppMap';
 
 AppRegistry.registerComponent('foody', () => App);
