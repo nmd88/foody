@@ -5,6 +5,7 @@ import { AppRegistry } from 'react-native';
 // import {App} from './AppDrawerNavigator';
 // import App from './AppReduxForm';
 // import App from './AppChat';
-import App from './AppChars';
+// import App from './AppChars';
+import App from './AppProgress';
 
 AppRegistry.registerComponent('foody', () => App);
