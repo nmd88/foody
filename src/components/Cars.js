@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
-import { Alert, Image, Text, TouchableOpacity, View, AsyncStorage,
-  FlatList, StyleSheet, ActivityIndicator, Dimensions, ScrollView } from 'react-native';
+import {
+  Alert, Image, Text, TouchableOpacity, View, AsyncStorage, Picker,
+  FlatList, StyleSheet, ActivityIndicator, Dimensions, ScrollView,
+} from 'react-native';
+import { connect } from 'react-redux';
+
 import { HOST } from './Const';
+import SelectCategory from './SelectCategory';
 
 class Cars extends Component {
   static navigationOptions = {
@@ -22,7 +27,23 @@ class Cars extends Component {
     this.getCars();
   }
 
+  searchCar = (data) => {
+    var cars = this.props.cars;
+    cars = cars.filter(function(car) {
+      if (!data["name"]) {return true;}
+      return car.name.toLowerCase().includes(data["name"].toLowerCase());
+    }).filter(function(car) {
+      if (!data["category_id"]) {return true;}
+      return car.category_id === data["category_id"];
+    }).filter(function(car) {
+      if (!data["cost"]) {return true;}
+      return (car.cost >= data["cost"][0] && car.cost <= data["cost"][1]);
+    });
+    this.setState({cars: cars});
+  }
+
   getCars = () => {
+    // $.param(data); a=1&b=2 with data = {a: 1, b: 2}
     AsyncStorage.getItem('token').then((token) => {
       fetch(`${HOST}/api/v1/cars`, {
         method: 'GET',
@@ -68,6 +89,7 @@ class Cars extends Component {
             minimumZoomScale={0.2}
             contentContainerStyle={{marginLeft: 2, marginRight: 2}}
           >
+            <SelectCategory categories={this.state.categories} handleSearch={this.searchCar} />
             <FlatList
               data={this.state.cars}
               renderItem={({item, index}) => this._renderCar(item, index)}
@@ -115,4 +137,10 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Cars;
+const mapStateToProps = (state) => {
+  return {
+    cars: state.carReducer.cars
+  }
+};
+
+export default connect(mapStateToProps)(Cars);

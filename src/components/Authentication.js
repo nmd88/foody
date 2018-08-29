@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, Text, TextInput, TouchableOpacity, View, AsyncStorage } from 'react-native';
+import { Alert, Text, TextInput, TouchableOpacity, View, AsyncStorage, ActivityIndicator } from 'react-native';
 import { StackNavigator, } from 'react-navigation';
 import styles from './Styles';
 import { HOST } from './Const';
@@ -8,19 +8,20 @@ class Authentication extends Component {
 
   constructor() {
     super();
-    this.state = { email: null, password: null };
+    this.state = { email: null, password: null, isLoading: false, };
   }
 
   componentWillMount() {
-     AsyncStorage.getItem('id_token').then((token) => {
+     AsyncStorage.getItem('token').then((token) => {
        if (token != null) {
-         this.props.navigation.navigate('home');
+         // this.props.navigation.navigate('home');
        }
      });
   }
 
   userLogin = () => {
     if (!this.state.email || !this.state.password) return;
+    this.setState({ isLoading: true, });
     fetch(`${HOST}/api/v1/sessions`, {
       method: 'POST',
       headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
@@ -32,7 +33,6 @@ class Authentication extends Component {
     .then((response) => response.json())
     .then((responseData) => {
       if (responseData.access_token) {
-        // Alert.alert(`${JSON.stringify(responseData.access_token)}`, 'Click the button to get a Chuck Norris quote!');
         this.saveItem('token', responseData.access_token);
         this.props.navigation.navigate('home');
       }
@@ -50,38 +50,46 @@ class Authentication extends Component {
   }
 
   render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.title}> Welcome </Text>
-
-        <View style={styles.form}>
-          <TextInput
-            editable={true}
-            onChangeText={(email) => this.setState({email})}
-            placeholder='email'
-            ref='email'
-            returnKeyType='next'
-            style={styles.inputText}
-            value={this.state.email}
-          />
-
-          <TextInput
-            editable={true}
-            onChangeText={(password) => this.setState({password})}
-            placeholder='Password'
-            ref='password'
-            returnKeyType='next'
-            secureTextEntry={true}
-            style={styles.inputText}
-            value={this.state.password}
-          />
-
-          <TouchableOpacity style={styles.buttonWrapper} onPress={this.userLogin.bind(this)}>
-            <Text style={styles.buttonText}> Log In </Text>
-          </TouchableOpacity>
+    if (this.state.isLoading) {
+      return (
+        <View style={{flex: 1, justifyContent: 'center', flexDirection: 'row'}}>
+          <ActivityIndicator size="large" color="#0000ff" />
         </View>
-      </View>
-    );
+      )
+    } else {
+      return (
+        <View style={styles.container}>
+          <Text style={styles.title}> Welcome </Text>
+
+          <View style={styles.form}>
+            <TextInput
+              editable={true}
+              onChangeText={(email) => this.setState({email})}
+              placeholder='email'
+              ref='email'
+              returnKeyType='next'
+              style={styles.inputText}
+              value={this.state.email}
+            />
+
+            <TextInput
+              editable={true}
+              onChangeText={(password) => this.setState({password})}
+              placeholder='Password'
+              ref='password'
+              returnKeyType='next'
+              secureTextEntry={true}
+              style={styles.inputText}
+              value={this.state.password}
+            />
+
+            <TouchableOpacity style={styles.buttonWrapper} onPress={this.userLogin.bind(this)}>
+              <Text style={styles.buttonText}> Log In </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      );
+    }
   }
 }
 

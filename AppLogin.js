@@ -31,7 +31,7 @@ const RootStack = createStackNavigator(
     form_post: {screen: FormPost},
   },
   {
-    initialRouteName: 'home'
+    initialRouteName: 'login'
   }
 );
 
