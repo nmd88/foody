@@ -48,7 +48,7 @@ class Posts extends Component {
 
   _renderPost = (item, index) => {
     return (
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => this.props.navigation.navigate('detail_post', {id: item.id})}>
         <View key={index} style={styles.item}>
           <Image style={{width: '100%', height: 120}}
             source={{uri: `${HOST}${item.image.url}`}} />

@@ -4,7 +4,7 @@ import {
   FlatList, StyleSheet, ActivityIndicator, Dimensions, ScrollView,
 } from 'react-native';
 
-import { HOST } from './Const';
+import { HOST } from '../Const';
 
 class SearchCar extends Component {
   constructor() {

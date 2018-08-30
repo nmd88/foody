@@ -14,7 +14,7 @@ class Authentication extends Component {
   componentWillMount() {
      AsyncStorage.getItem('token').then((token) => {
        if (token != null) {
-         this.props.navigation.navigate('home');
+         // this.props.navigation.navigate('home');
        }
      });
   }

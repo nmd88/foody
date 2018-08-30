@@ -13,9 +13,11 @@ import Home from './src/components/HomePage';
 import HomeCars from './src/components/home/Cars';
 import HomeImages from './src/components/home/Images';
 import HomePosts from './src/components/home/Posts';
-import Cars from './src/components/Cars';
+import Cars from './src/components/cars';
+import DetailCar from './src/components/cars/Detail';
 import Posts from './src/components/posts';
 import FormPost from './src/components/posts/Form';
+import DetailPost from './src/components/posts/Detail';
 
 YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
 
@@ -27,7 +29,9 @@ const RootStack = createStackNavigator(
     home_posts: {screen: HomePosts},
     home_images: {screen: HomeImages},
     cars: {screen: Cars},
+    detail_car: {screen: DetailCar},
     posts: {screen: Posts},
+    detail_post: {screen: DetailPost},
     form_post: {screen: FormPost},
   },
   {

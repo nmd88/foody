@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 
-import { HOST } from './Const';
+import { HOST } from '../Const';
 import SearchCar from './SearchCar';
 
 class Cars extends Component {
@@ -64,8 +64,8 @@ class Cars extends Component {
 
   _renderCar = (item, _index) => {
     return (
-      <TouchableOpacity>
-        <View style={styles.item}>
+      <TouchableOpacity onPress={() => this.props.navigation.navigate('detail_car', {id: item.id})}>
+        <View key={item.id} style={styles.item}>
           <Image style={{width: '100%', height: 120}}
             source={{uri: `${HOST}${item.image.url}`}} />
           <Text>{item.name}</Text>

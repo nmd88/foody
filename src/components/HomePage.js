@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {  Image, Text, TouchableOpacity, View, AsyncStorage, FlatList, StyleSheet, ActivityIndicator, ScrollView } from 'react-native';
-import { StackNavigator, } from 'react-navigation';
 import { connect } from 'react-redux';
 
 import { HOST } from './Const';
