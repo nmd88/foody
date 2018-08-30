@@ -1,0 +1,13 @@
+export const INSERT_POST = 'INSERT_POST';
+export const INSERT_CAR = 'INSERT_CAR';
+export const INSERT_IMAGE = 'INSERT_IMAGE';
+export const INSERT_CATEGORY = 'INSERT_CATEGORY';
+export const ADD_POST = 'ADD_POST';
+export const ADD_CAR = 'ADD_CAR';
+export const ADD_IMAGE = 'ADD_IMAGE';
+export const EDIT_POST = 'EDIT_POST';
+export const EDIT_CAR = 'EDIT_CAR';
+export const EDIT_IMAGE = 'EDIT_IMAGE';
+export const DELETE_POST = 'DELETE_POST';
+export const DELETE_CAR = 'DELETE_CAR';
+export const DELETE_IMAGE = 'DELETE_IMAGE';
