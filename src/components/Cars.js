@@ -6,7 +6,7 @@ import {
 import { connect } from 'react-redux';
 
 import { HOST } from './Const';
-import SelectCategory from './SelectCategory';
+import SearchCar from './SearchCar';
 
 class Cars extends Component {
   static navigationOptions = {
@@ -89,7 +89,7 @@ class Cars extends Component {
             minimumZoomScale={0.2}
             contentContainerStyle={{marginLeft: 2, marginRight: 2}}
           >
-            <SelectCategory categories={this.state.categories} handleSearch={this.searchCar} />
+            <SearchCar categories={this.state.categories} handleSearch={this.searchCar} />
             <FlatList
               data={this.state.cars}
               renderItem={({item, index}) => this._renderCar(item, index)}

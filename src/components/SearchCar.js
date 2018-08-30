@@ -6,7 +6,7 @@ import {
 
 import { HOST } from './Const';
 
-class SelectCategory extends Component {
+class SearchCar extends Component {
   constructor() {
     super();
     this.state = {
@@ -104,38 +104,4 @@ class SelectCategory extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  list: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
-  loading: {
-    flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'row',
-  },
-  colorLoading: {
-    color: "#0000ff",
-  },
-  title: {
-    borderBottomWidth: 2.5,
-    borderBottomColor: 'red',
-    fontSize : 25,
-    fontWeight : 'bold'
-  },
-  item: {
-    flex: 1,
-    paddingTop: 10,
-    paddingBottom: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-  }
-});
-
-export default SelectCategory;
+export default SearchCar;

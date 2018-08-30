@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
-import { Alert, Image, Text, TouchableOpacity, View, AsyncStorage,
-  FlatList, StyleSheet, ActivityIndicator, Dimensions, ScrollView } from 'react-native';
-import { HOST } from './Const';
+import {
+  Alert, Image, Text, TouchableOpacity, View, AsyncStorage,
+  FlatList, StyleSheet, ActivityIndicator, Dimensions, ScrollView
+} from 'react-native';
+import { connect } from 'react-redux';
+
+import { HOST } from '../Const';
+import SearchPost from './SearchPost';
 
 class Posts extends Component {
   static navigationOptions = {
@@ -53,6 +58,18 @@ class Posts extends Component {
     )
   }
 
+  searchPost = (data) => {
+    var posts = this.props.posts;
+    posts = posts.filter(function(post) {
+      if (!data["title"]) {return true;}
+      return post.title.toLowerCase().includes(data["title"].toLowerCase());
+    }).filter(function(post) {
+      if (!data["category_id"]) {return true;}
+      return post.category_id === data["category_id"];
+    });
+    this.setState({posts: posts});
+  }
+
   render() {
     if (this.state.isLoading) {
       return (
@@ -74,6 +91,7 @@ class Posts extends Component {
                 <Text>Add</Text>
               </TouchableOpacity>
             </View>
+            <SearchPost categories={this.state.categories} handleSearch={this.searchPost} />
             <FlatList
               data={this.state.posts}
               renderItem={({item, index}) => this._renderPost(item, index)}
@@ -121,4 +139,10 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Posts;
+const mapStateToProps = (state) => {
+  return {
+    posts: state.postReducer.posts
+  }
+};
+
+export default connect(mapStateToProps)(Posts);

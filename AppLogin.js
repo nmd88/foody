@@ -14,8 +14,8 @@ import HomeCars from './src/components/home/Cars';
 import HomeImages from './src/components/home/Images';
 import HomePosts from './src/components/home/Posts';
 import Cars from './src/components/Cars';
-import Posts from './src/components/Posts';
-import FormPost from './src/components/post/Form';
+import Posts from './src/components/posts';
+import FormPost from './src/components/posts/Form';
 
 YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
 

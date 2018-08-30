@@ -14,14 +14,14 @@ class Authentication extends Component {
   componentWillMount() {
      AsyncStorage.getItem('token').then((token) => {
        if (token != null) {
-         // this.props.navigation.navigate('home');
+         this.props.navigation.navigate('home');
        }
      });
   }
 
   userLogin = () => {
     if (!this.state.email || !this.state.password) return;
-    this.setState({ isLoading: true, });
+    this.setState({ isLoading: true });
     fetch(`${HOST}/api/v1/sessions`, {
       method: 'POST',
       headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
@@ -35,6 +35,8 @@ class Authentication extends Component {
       if (responseData.access_token) {
         this.saveItem('token', responseData.access_token);
         this.props.navigation.navigate('home');
+      } else {
+        this.setState({ isLoading: false });
       }
     }).catch((error) => {
       console.error(error);
