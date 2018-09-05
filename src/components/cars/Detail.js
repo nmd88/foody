@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
   Alert, Image, Text, TouchableOpacity, View, AsyncStorage, Picker, TextInput,
-  FlatList, StyleSheet, ActivityIndicator, Dimensions, ScrollView,
+  FlatList, StyleSheet, ActivityIndicator, Dimensions, ScrollView, WebView,
 } from 'react-native';
 import { connect } from 'react-redux';
 
@@ -30,19 +30,12 @@ class DetailCar extends Component {
 
   render() {
     const car = this.state.car;
+    var content = '<div style="width: 100%"><img src=' + HOST + car.image.url +
+      ' width="100%" height: "auto"> <h4>' + car.name + '</h4> <h4>' +
+      car.cost + ' VND</h4>' + car.description + '</div>';
     return (
-      <View style={{flex: 1}}>
-        <View>
-          <Image style={{width: '100%', height: 300}} source={{uri: `${HOST}${car.image.url}`}} />
-        </View>
-        <View>
-          <Text>Code: {car.code}</Text>
-          <Text>Name: {car.name}</Text>
-          <Text>Cost: {car.cost}</Text>
-          <Text>Description: {car.description}</Text>
-        </View>
-      </View>
-    )
+      <WebView source={{ html: content, baseUrl: '' }} />
+    );
   }
 }
 
