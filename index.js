@@ -7,7 +7,7 @@ import { AppRegistry } from 'react-native';
 // import App from './AppChat';
 // import App from './AppChars';
 // import App from './AppProgress';
-// import App from './AppLogin';
-import App from './AppMap';
+import App from './AppLogin';
+// import App from './AppMap';
 
 AppRegistry.registerComponent('foody', () => App);

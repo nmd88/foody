@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
   Alert, Image, Text, TouchableOpacity, View, AsyncStorage, Picker, TextInput,
-  FlatList, StyleSheet, ActivityIndicator, Dimensions, ScrollView,
+  FlatList, StyleSheet, ActivityIndicator, Dimensions, ScrollView, WebView,
 } from 'react-native';
 import { connect } from 'react-redux';
 
@@ -30,17 +30,11 @@ class DetailPost extends Component {
 
   render() {
     const post = this.state.post;
+    var content = '<div style="width: 100%"><img src=' + HOST + post.image.url +
+      ' width="100%" height: "auto"> <h4>' + post.title + '</h4>' + post.content + '</div>';
     return (
-      <View style={{flex: 1}}>
-        <View>
-          <Image style={{width: '100%', height: 300}} source={{uri: `${HOST}${post.image.url}`}} />
-        </View>
-        <View>
-          <Text>Title: {post.title}</Text>
-          <Text>Content: {post.content}</Text>
-        </View>
-      </View>
-    )
+      <WebView source={{ html: content, baseUrl: '' }} />
+    );
   }
 }
 

@@ -58,6 +58,24 @@ class Posts extends Component {
     )
   }
 
+  _renderRowDetail = (rowData, rowID) => {
+    return (
+      <View key={rowData.id} style={{flex: 1, flexDirection: 'row', marginTop: 5}}>
+          <View style={{flex: 40, marginRight: 5}}>
+            <TouchableOpacity>
+              <Image style={{width: '100%', height: 70}}
+                source={{uri: `${HOST}${rowData.image.url}`}} />
+            </TouchableOpacity>
+          </View>
+          <View style={{flex: 55}}>
+            <TouchableOpacity>
+              <Text>{rowData.title}</Text>
+            </TouchableOpacity>
+          </View>
+      </View>
+    )
+  }
+
   searchPost = (data) => {
     var posts = this.props.posts;
     posts = posts.filter(function(post) {
@@ -94,7 +112,7 @@ class Posts extends Component {
             <SearchPost categories={this.state.categories} handleSearch={this.searchPost} />
             <FlatList
               data={this.state.posts}
-              renderItem={({item, index}) => this._renderPost(item, index)}
+              renderItem={({item, index}) => this._renderRowDetail(item, index)}
               keyExtractor={(item, index) => index.toString()}
             >
             </FlatList>
