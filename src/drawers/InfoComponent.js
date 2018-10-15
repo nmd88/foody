@@ -9,10 +9,10 @@ const backgroundColor = '#007256';
 
 export default class InfoComponent extends Component {
     static navigationOptions = ({ navigation }) => {
-        let drawerLabel = 'Info';
+        let drawerLabel = 'Scan Code';
         let drawerIcon = () => (
             <Image
-                source={require('./../../images/info-icon.png')}
+                source={require('./../../images/scanCode.png')}
                 style={{ width: 26, height: 26, tintColor: backgroundColor }}
             />
         );
@@ -31,21 +31,8 @@ export default class InfoComponent extends Component {
                 justifyContent: 'center'
             }}>
                 <Text style={{ fontWeight: 'bold', fontSize: 22, color: 'white' }}>
-                    This is Info Screen
+                    This is Scan Code Screen
                 </Text>
-                <TouchableHighlight style={{
-                                            margin: 20,
-                                            width: 200,
-                                            height: 45,
-                                            backgroundColor: 'darkviolet',
-                                            padding: 10,
-                                            alignItems: 'center',
-                                         }}
-                    onPress={() => {
-                        this.props.navigation.goBack();
-                    }}>
-                    <Text style={{color: 'white', fontSize: 18}}>Back to Home</Text>
-                </TouchableHighlight>
             </View>
         </View>);
     }

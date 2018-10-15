@@ -1,5 +1,5 @@
 import { AppRegistry } from 'react-native';
-import { TabNavigator } from 'react-navigation';
+import { createBottomTabNavigator } from 'react-navigation';
 
 import HomeComponent from './src/tabs/HomeComponent';
 import InfoComponent from './src/tabs/InfoComponent';
@@ -36,8 +36,6 @@ let tabNavigatorConfig = {
         },
         // showLabel: false
     },
-    order: ["Settings", "Home", "Cloud", "Info"],
+    order: ["Home", "Settings", "Cloud", "Info"],
 };
-const App = TabNavigator(routeConfigs, tabNavigatorConfig);
-
-export {App};
+export const App = createBottomTabNavigator(routeConfigs, tabNavigatorConfig);

@@ -24,15 +24,6 @@ export default class HomeComponent extends Component {
             <Text style={{ fontWeight: 'bold', fontSize: 22, color: 'white' }}>
                 This is Home Screen
             </Text>
-            <Button
-                containerStyle={{ padding: 10, margin: 20, width: 200, height: 45, borderRadius: 10, backgroundColor: 'darkviolet' }}
-                style={{ fontSize: 18, color: 'white' }}
-                onPress={() => {
-                    const { navigate } = this.props.navigation;
-                    navigate('Info');
-                }}>
-                Navigate to Detail
-            </Button>
         </View>);
     }
 }

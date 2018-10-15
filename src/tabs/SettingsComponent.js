@@ -5,10 +5,10 @@ const backgroundColor = '#e97600';
 
 export default class SettingsComponent extends Component {
     static navigationOptions = ({ navigation }) => {
-        let tabBarLabel = 'Settings';
+        let tabBarLabel = 'Promotion';
         let tabBarIcon = () => (
             <Image
-                source={require('./../../images/settings-icon.png')}
+                source={require('./../../images/new.png')}
                 style={{ width: 26, height: 26, tintColor: backgroundColor }}
             />
         );
@@ -22,9 +22,7 @@ export default class SettingsComponent extends Component {
             alignItems: 'center',
             justifyContent: 'center'
         }}>
-            <Text style={{ fontWeight: 'bold', fontSize: 22, color: 'white' }}>
-                This is Settings Screen
-        </Text>
+          <Text style={{ fontWeight: 'bold', fontSize: 22, color: 'white' }}>This is Promotion Screen</Text>
         </View>);
     }
 }

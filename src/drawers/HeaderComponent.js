@@ -5,20 +5,24 @@ import {
 } from 'react-native';
 
 export default class HeaderComponent extends Component {
-    render() {
-        return (<View style={{
-            height: 90,
-            flexDirection: 'row',
-            justifyContent: 'flex-start',
-            alignItems: 'center'
-        }}>
-            <TouchableHighlight style={{ marginLeft: 10, marginTop: 20 }}
-                onPress={() => this.props.navigation.openDrawer()}>
-                <Image
-                    style={{ width: 32, height: 32 }}
-                    source={require('./../../images/menu-icon.png')}
-                />
-            </TouchableHighlight>
-        </View>);
-    }
+  render() {
+    return (
+      <View style={{
+        height: 40,
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center'
+        }}
+      >
+      <TouchableHighlight
+         style={{ marginLeft: 10, marginTop: 10 }}
+         onPress={() => this.props.navigation.openDrawer()}>
+          <Image
+            style={{ width: 20, height: 20 }}
+            source={require('./../../images/menuIcon.png')}
+          />
+          </TouchableHighlight>
+      </View>
+    );
+  }
 }

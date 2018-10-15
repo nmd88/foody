@@ -6,10 +6,10 @@ import {
 const backgroundColor = '#964f8e';
 export default class CloudComponent extends Component {
     static navigationOptions = ({ navigation }) => {
-        let drawerLabel = 'Cloud';
+        let drawerLabel = 'Payment Code';
         let drawerIcon = () => (
             <Image
-                source={require('./../../images/cloud-icon.png')}
+                source={require('./../../images/paymentCode.png')}
                 style={{ width: 26, height: 26, tintColor: backgroundColor }}
             />
         );
@@ -28,7 +28,7 @@ export default class CloudComponent extends Component {
                 justifyContent: 'center'
             }}>
                 <Text style={{ fontWeight: 'bold', fontSize: 22, color: 'white' }}>
-                    This is Cloud Screen
+                    This is Payment Code Screen
                 </Text>
             </View>
         </View>);

@@ -1,5 +1,5 @@
 import { AppRegistry, Dimensions } from 'react-native';
-import { DrawerNavigator } from 'react-navigation';
+import { createDrawerNavigator } from 'react-navigation';
 // import App from './App';
 //Components
 import HomeComponent from './src/drawers/HomeComponent';
@@ -12,17 +12,15 @@ var {height, width} = Dimensions.get('window');
 
 let routeConfigs = {
     'Home': {
-        path: '/',
         screen: HomeComponent,
     },
-    'Info': {
-        path: '/info',
+    'ScanCode': {
         screen: InfoComponent,
     },
-    'Settings': {
+    'Withdrawal': {
         screen: SettingsComponent,
     },
-    'Cloud': {
+    'PaymentCode': {
         screen: CloudComponent,
     },
 };
@@ -37,7 +35,7 @@ let drawerNavigatorConfig = {
     contentOptions: {
         activeTintColor: 'red',
     },
-    order: ["Info", "Settings", "Cloud", "Home"],
+    order: ["Home", "Withdrawal", "PaymentCode", "ScanCode"],
 };
-const App = DrawerNavigator(routeConfigs, drawerNavigatorConfig);
-export {App};
+const AppKK = createDrawerNavigator(routeConfigs, drawerNavigatorConfig);
+export {AppKK};
